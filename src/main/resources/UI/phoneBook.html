@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html ng-app="PhoneBook">
+<head>
+  <title>KasaSmart</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.8/angular-material.min.css">
+  <link rel="stylesheet" href="phoneBook.css">
+  <link href = "https://fonts.googleapis.com/icon?family=Material+Icons" rel = "stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-animate.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-aria.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-messages.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.8/angular-material.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+  <script src="phoneBook.js"></script>
+</head>
+<body ng-controller="ContactController">
+<div class="container">
+<div class="form-group row">
+  <div class ="col-sm-4"></div>
+  <div class ="col-sm-4">
+        <h2 style='text-align:center;color:black'>KasaSmart Phone Book</h2>
+  </div>
+  <div class ="col-sm-3"></div>
+</div>
+<div class="row">
+    <div class="col-sm-10"></div>
+    <div class="col-sm-2">
+    <i class="material-icons  custom" style="color:black;font-size:60px" ng-click="Add_Contacts()">add_box</i>
+    <i class="material-icons  custom" style="color:black;font-size:60px" ng-click="List_Group()">group</i>
+    </div>
+</div>
+<div ng-if="DisplayAll" id='AllContacts'>
+    <table class="table">
+        <tbody>
+        <tr ng-repeat='contact in contactdata' class="success" >
+            <td id='{{contact.contact_id}}' style="font-size:30px;padding-left:10px" ng-click='Details_contacts($event)'>{{contact.fname}}</td> 
+            <td class="success" ><i class="material-icons  custom" id='{{contact.contact_id}}' style="color:black;font-size:60px;padding-right:2%" ng-click="Delete_contacts($event)">delete</i></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div class="row" ng-if="AddNewContacts">
+<form>
+           <div class="form-group row">
+                  <div class ="col-sm-4"></div>
+                  <div class ="col-sm-4">
+                        <h5 style='text-align:center;color:black;font-size:30px'>New Contact</h5>
+                  </div>
+                  <div class ="col-sm-3"></div>
+            </div>
+            
+            <div class="row" >
+                <div class="col-sm-1"></div>
+                <div class="col-sm-8">
+                    <label for="Fname" class="control-label" style="color:black;margin-left:2%">FirstName:</label>
+                    <input type="text" class="form-control" id="FirstName" placeholder="First Name:" ng-model="Details.fname" ng-required="required" autocomplete="off">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-1"></div>
+                <div class="col-sm-8">
+                    <label for="Mname" class="control-label" style="color:black;margin-left:2%">MiddleName:</label>
+                    <input type="text" class="form-control" id="MiddleName" placeholder="Middle Name:" ng-model="Details.mname" ng-init=""  autocomplete="off">
+                 </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-1"></div>
+                <div class="col-sm-8">
+                    <label for="Lname" class="control-label" style="color:black;margin-left:2%">LastName:</label>
+                    <input type="text" class="form-control" id="LastName" placeholder="Last Name:" ng-model="Details.lname"  ng-init="" autocomplete="off">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-1"></div>
+                <div class="col-sm-4">
+                    <label for="ContactNumber" class="control-label" style="color:black;margin-left:2%">ContactNumber:</label>
+                    <input type="text" class="form-control" id="ContactNumber" placeholder="ContactNumber" ng-model="Details.contactNumber" ng-required="required" autocomplete="off">
+                </div>
+                <div class="col-sm-2">
+                    <label for="Extension" class="control-label" style="color:black;margin-left:2%">Extension:</label>
+                    <input type="text" class="form-control" id="Extension" ng-placeholder="ContactNumber" ng-model="Details.extension"  ng-init="" autocomplete="off" >
+                </div>
+                <div class="col-sm-2">
+                    <label for="countryCode" class="control-label" style="color:black;margin-left:2%">countryCode:</label>
+                    <input type="text" class="form-control" id="countryCode" placeholder="countryCode" ng-model="Details.countryCode" ng-init="+1" autocomplete="off">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-1"></div>
+                <div class="col-sm-8">
+                    <label for="Email" class="control-label" style="color:black;margin-left:2%">Email:</label>
+                    <input type="email" class="form-control" id="Email" placeholder="PrimaryEmail" ng-model="Details.emails[0]" autocomplete="off">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-1"></div>
+                <div class="col-sm-3">
+                    <label for="DOB" class="control-label" style="color:black;margin-left:2%">DOB:</label>
+                    <md-datepicker ng-model="Details.dob"  md-placeholder="Enter date"></md-datepicker>
+                </div> 
+            </div>
+            <div class="row">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-3">
+                    <label for="Groups"  class="control-label" style="color:black;margin-left:2%">Group:</label>
+                    <md-input-container>
+                        <md-select ng-model="Details.groups" multiple>
+                            <md-optgroup label="Group">
+                                <md-option  ng-repeat="Group in groups">{{Group.label}}</md-option>
+                            </md-optgroup>
+                        </md-select>
+                  </md-input-container>
+            </div> 
+            <div class="col-sm-3">
+                    <label for="Gender"  class="control-label" style="color:black;margin-left:2%">GENDER:</label>
+                    <md-input-container>
+                        <md-select ng-model="Details.gender" >
+                            <md-optgroup label="GENDER">
+                                <md-option  ng-repeat="c in gender">{{c}}</md-option>
+                            </md-optgroup>
+                        </md-select>
+                  </md-input-container>
+            </div> 
+            </div>
+            <div class="row">
+                <div class="col-sm-5"></div>
+                        <div class="col-sm-3">
+                                <i class="material-icons  custom" style="color:black;font-size:60px;padding-right:2%" ng-click="save_Contacts(Details)">save</i>
+                                <i class="material-icons  custom" style="color:black;font-size:60px;padding-right:2%" ng-click="Cancel_Contacts()">cancel</i>
+                        </div>
+            </div>     
+</form>
+</div> 
+<div ng-if="ListGroups">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>GROUPS</th>
+                <th>
+                    <label for="DOB" class="control-label" style="color:black;margin-left:2%;font-size: 20px">New GROUP:</label>
+                    <i class="material-icons  custom" style="color:black;font-size:40px;padding-right:2%" ng-click="add_Groups()">add</i>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat='group in groupList' class="success">
+            <td id='{{group.id}}' ng-click='Details_GroupContacts($event)' style="font-size:30px;padding-left:10px">{{group.label}}</td>
+            <td class="success" ><i class="material-icons  custom" id='{{group.id}}' style="color:black;font-size:60px;padding-right:2%" ng-click="Delete_Group($event)">delete</i></td>
+        </tr>
+        </tbody>
+    </table>
+     <div class="col-sm-5"></div>
+     <div class="col-sm-3">
+     <i class="material-icons  custom" style="color:black;font-size:60px" ng-click="closeGroup()">cancel</i>
+    </div>
+</div> 
+<div ng-if="ContactList_group">
+    <table class="table">
+        <tbody>
+        <tr ng-repeat='contact in Contact_GroupList' class="success">
+            <td id='{{contact.id}}' style="font-size:30px;padding-left:10px">{{contact.fname}}</td>
+            <td class="success" ><i class="material-icons  custom" id='{{contact.contact_id}}' style="color:black;font-size:60px;padding-right:2%" ng-click="Delete_Groupcontacts($event)">delete</i></td>
+        </tr>
+        </tbody>
+    </table>
+</div> 
+    
+<div ng-if="conlength==0">
+    <table class="table">
+        <tbody>
+        <tr>
+            <td style="padding-left:10px;background-color:antiquewhite"><p style="font-size:15px;font-weight:bolder">No Records</p></td>
+        </tr>
+        </tbody>
+    </table>
+</div>    
+
+    
+    
+    
+<div ng-if="AddGroups">
+    <form>
+      <div class="row" >
+                <div class="col-sm-1"></div>
+                <div class="col-sm-8">
+                    <label for="Groupname" class="control-label" style="color:black;margin-left:2%">GroupName:</label>
+                    <input type="text" class="form-control" id="GroupName" placeholder="New Group Name" ng-model="user.groupName" ng-required="required" autocomplete="off">
+                </div>
+      </div>
+      <div class="row">
+                <div class="col-sm-5"></div>
+                        <div class="col-sm-3">
+                                <i class="material-icons  custom" style="color:black;font-size:60px;padding-right:2%" ng-click="save_Groups(user)">save</i>
+                                <i class="material-icons  custom" style="color:black;font-size:60px;padding-right:2%" ng-click="Cancel_Groups()">cancel</i>
+                        </div>
+      </div> 
+   </form>
+</div> 
+<div ng-if="SingleContacts">
+<form>
+           <div class="row" >
+                <div class="col-sm-1"></div>
+                <div class="col-sm-8">
+                    <label for="Fname" class="control-label" style="color:black;margin-left:2%">FirstName:</label>
+                    <input type="text" class="form-control" id="EditFname" placeholder="First Name" ng-model="fname"  ng-value={{fname}} ng-disabled=true>
+                </div>
+           </div>
+           <div class="row">
+                <div class="col-sm-1"></div>
+                <div class="col-sm-8">
+                    <label for="Mname" class="control-label" style="color:black;margin-left:2%">MiddleName:</label>
+                    <input type="text" class="form-control" id="EditMName" placeholder="Middle Name:" ng-model="mname" ng-value={{mname}}  ng-disabled=true>
+                 </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-1"></div>
+                <div class="col-sm-8">
+                    <label for="Lname" class="control-label" style="color:black;margin-left:2%">LastName:</label>
+                    <input type="text" class="form-control" id="EditLastName" placeholder="Last Name:" ng-model="lname"  ng-value={{lname}} ng-disabled=true>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-1"></div>
+                <div class="col-sm-4">
+                    <label for="ContactNumber" class="control-label" style="color:black;margin-left:2%">ContactNumber:</label>
+                    <input type="text" class="form-control" id="EditContactNumber" ng-disabled=true ng-model="contactNumber" ng-value={{contactNumber}} ng-required="required" >
+                </div>
+                <div class="col-sm-2">
+                    <label for="Extension" class="control-label" style="color:black;margin-left:2%">Extension:</label>
+                    <input type="text" class="form-control" id="EditExtension" ng-placeholder="ContactNumber" ng-model="extension"  ng-value={{extension}} ng-disabled=true >
+                </div>
+                <div class="col-sm-2">
+                    <label for="countryCode" class="control-label" style="color:black;margin-left:2%">countryCode:</label>
+                    <input type="text" class="form-control" id="EditcountryCode" ng-placeholder="countryCode" ng-model="countryCode" ng-value={{countryCode}}  ng-disabled=true>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-1"></div>
+                <div class="col-sm-8">
+                    <label for="Email" class="control-label" style="color:black;margin-left:2%">Email:</label>
+                    <input type="email" class="form-control" id="EditEmail" ng-placeholder="PrimaryEmail" ng-model="emails" ng-value={{emails}} ng-disabled=true >
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-1"></div>
+                <div class="col-sm-8">
+                    <label for="dob" class="control-label" style="color:black;margin-left:2%">DOB:</label>
+                    <input type="text" class="form-control" id="Birthday"  ng-model="Birthday" ng-value={{Birthday}} ng-disabled=true>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-5"></div>
+                        <div class="col-sm-3">
+                                <i class="material-icons  custom" style="color:black;font-size:60px;padding-right:2%" ng-click="Cancel_form()">cancel</i>
+                        </div>
+            </div>
+</form>
+</div>
+</div>
+</body>
+</html>

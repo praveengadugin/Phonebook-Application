@@ -1,0 +1,25 @@
+2019-03-02 00:05:23,296 [Worker-2: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2019-03-02 00:08:55,108 [Worker-14: Creating project "phonebook"] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.github.phonebook:phonebook:1.0-SNAPSHOT @ /Users/laxmipoojaanegundi/Desktop/kasaSmart/phonebook/pom.xml.
+2019-03-02 00:08:55,331 [Worker-14: Creating project "phonebook"] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /phonebook/src/main/java
+2019-03-02 00:08:55,333 [Worker-14: Creating project "phonebook"] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /phonebook/src/main/resources
+2019-03-02 00:08:55,333 [Worker-14: Creating project "phonebook"] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /phonebook/src/test/java
+2019-03-02 00:08:55,334 [Worker-14: Creating project "phonebook"] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /phonebook/src/test/resources
+2019-03-02 00:08:56,318 [Worker-5: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2019-03-02 00:08:56,327 [Worker-5: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2019-03-02 00:08:56,331 [Worker-5: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2019-03-02 00:08:56,331 [Worker-5: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2019-03-02 00:09:11,086 [Worker-10: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2019-03-02 00:09:11,089 [Worker-10: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2019-03-02 00:09:11,092 [Worker-10: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2019-03-02 00:09:11,092 [Worker-10: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2019-03-02 00:11:04,054 [Worker-4: Updating Maven Project] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update started
+2019-03-02 00:11:04,565 [Worker-4: Updating Maven Project] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.github.phonebook:phonebook:1.0-SNAPSHOT @ /Users/laxmipoojaanegundi/Desktop/kasaSmart/phonebook/pom.xml.
+2019-03-02 00:11:04,974 [Worker-4: Updating Maven Project] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /phonebook/src/main/java
+2019-03-02 00:11:04,975 [Worker-4: Updating Maven Project] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /phonebook/src/main/resources
+2019-03-02 00:11:04,980 [Worker-4: Updating Maven Project] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /phonebook/src/test/java
+2019-03-02 00:11:04,980 [Worker-4: Updating Maven Project] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /phonebook/src/test/resources
+2019-03-02 00:11:05,138 [Worker-4: Updating Maven Project] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update completed: 1 sec
+2019-03-02 00:11:05,944 [Worker-2: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-03-02 00:11:05,945 [Worker-2: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2019-03-02 00:11:05,961 [Worker-2: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-03-02 00:11:05,962 [Worker-2: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
